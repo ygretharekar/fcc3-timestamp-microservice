@@ -31,11 +31,15 @@ app.route('/:string')
    .get(
      function(req, res) {
        
+       var date;
        
+       if(/^\d{8,}$/.test(req.params.string)) date = moment(req.params.string, 'X');
+       
+       else date = moment(req.params.string, 'D MMMM, YYYY');
        
        res.json({
-        unix: 'hello',
-        natural: 'world'
+        unix: date.format('X'),
+        natural: date.format('D MMMM, YYYY')
        });
     });
 
