@@ -38,8 +38,8 @@ app.route('/:string')
        else date = moment(req.params.string, 'D MMMM, YYYY');
        
        res.json({
-        unix: date.format('X'),
-        natural: date.format('D MMMM, YYYY')
+        unix: date.format('X') == "Invalid date" ? "null": date.format('X'),
+        natural: date.format('X') == "Invalid date" ? "null": date.format('D MMMM, YYYY')
        });
     });
 
